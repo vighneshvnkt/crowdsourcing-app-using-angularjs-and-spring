@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24 Apr, 2017 7:02:22 PM by Hibernate Tools 5.2.1.Final -->
+<hibernate-mapping>
+    <class name="neu.edu.entity.UserCreditCard" table="user_credit_card" catalog="myproject" optimistic-lock="version">
+        <id name="cardId" type="java.lang.Integer">
+            <column name="card_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="userAccount" class="neu.edu.entity.UserAccount" fetch="select">
+            <column name="user_id" />
+        </many-to-one>
+        <property name="cardNumber" type="int">
+            <column name="card_number" not-null="true" />
+        </property>
+        <property name="cvv" type="int">
+            <column name="cvv" not-null="true" />
+        </property>
+        <property name="expiry" type="string">
+            <column name="expiry" length="100" not-null="true" />
+        </property>
+        <set name="userDonations" table="user_donation" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="card_id" />
+            </key>
+            <one-to-many class="neu.edu.entity.UserDonation" />
+        </set>
+    </class>
+</hibernate-mapping>
