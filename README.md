@@ -21,6 +21,7 @@ Debug app for missing libraries if running the example fails.
 ## Running the example
 
 ```
+Create a new schema in the database and create tables and columns by refering to the dump files 
 Run ProjectREST and ensure the web app is running in the Tomcat container
 Run ProjectAngular on a different port and try to perform operations like registration and login
 ```
