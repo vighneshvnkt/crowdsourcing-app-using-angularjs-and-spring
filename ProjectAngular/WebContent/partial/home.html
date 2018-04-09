@@ -1,0 +1,21 @@
+
+
+<div class="container">
+   
+        
+       <div class="page-header" ng-init="homeCtrl.init()">
+	{{homeCtrl.messageDash}}
+	{{homeCtrl.message}}
+	<div class="block">
+	<table>
+		<tr ng-repeat="project in homeCtrl.projects">
+			<td>{{ project.name }}</td>
+			<td><td><a ng-click="homeCtrl.viewProject({project})"
+					class="btn btn-primary"> View Project</a></td>
+					<td> {{homeCtrl.projectError}}</td>
+		</tr>
+	</table>
+</div>
+        </div>
+     
+</div>

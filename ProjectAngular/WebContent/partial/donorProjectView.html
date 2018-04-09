@@ -1,0 +1,91 @@
+<label >Project Name: </label>
+{{project.name}} <br>
+<label >Project Description</label>
+						{{project.desc}} <br>
+<label >Project Deadline</label>
+					{{project.deadline}} <br>
+<label >Amount required</label>
+						{{project.requiredAmount}}<br>
+<label >Amount received</label>
+						{{project.receivedAmount}}<br>						
+						<label >Project Category</label>
+						{{project.category.catName}}<br>
+<label >Comments</label>
+<table>
+<tr ng-repeat = "comm in project.userComments">
+<td> {{comm.comment}} </td>
+<td>    _______        </td>
+<td> {{comm.comment_date}} </td>
+</tr>
+</table>
+
+<label >Donations</label>
+
+<br> <br> <br>
+<div ng-show="donorProjectViewCtrl.error" align="center"
+						class="col-sm-offset-2 col-sm-2 alert alert-danger">{{donorProjectViewCtrl.message}}</div>
+<h3>Make donation</h3>
+<form class='form-horizontal' role='form' ng-submit="donorProjectViewCtrl.addDonation()">
+
+
+
+
+					<label >Amount to donate</label>
+						
+						
+								<input class='form-control' id='id_amount'
+									ng-model="donorProjectViewCtrl.donation.donationAmount" name = "amount"
+									placeholder='Amount' type='number' required>
+							
+						<br>
+											<label '>Card Number</label>
+						
+						
+								<input class='form-control' id='cardNo'
+									ng-model="donorProjectViewCtrl.donation.cardNumber" name = "cardNumber"
+									placeholder='Card Number' type='text' required>
+							
+						<br>
+											<label >Expiry Date</label>
+			
+			
+								<input class='form-control' id='id_expiry'
+									ng-model="donorProjectViewCtrl.donation.expiryDate" name = "expiry"
+									placeholder='Expiry' type='date' required>
+					
+						<br>
+											<label >CVV</label>
+						
+						
+								<input class='form-control' id='id_cvv'
+									ng-model="donorProjectViewCtrl.donation.cvv" name = "cvv"
+									placeholder='CVV' type='number' required>
+						
+<br>
+<button class='btn btn-primary' 
+							type='submit'>Donate</button>
+</div>
+</form>
+
+<h3>Add a comment</h3>
+<form class='form-horizontal' role='form' ng-submit="donorProjectViewCtrl.addComment()">
+
+
+
+
+					<label >Comment</label>
+						
+						
+								<input class='form-control' id='id_comment'
+									ng-model="donorProjectViewCtrl.comments.commentName" name = "comment"
+									placeholder='Comment here' type='text' required>
+							
+						<br>
+						
+<br>
+<button class='btn btn-primary' 
+							type='submit'>Add comment</button>
+</div>
+</form>
+
+

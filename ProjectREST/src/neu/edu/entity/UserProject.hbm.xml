@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24 Apr, 2017 7:02:22 PM by Hibernate Tools 5.2.1.Final -->
+<hibernate-mapping>
+    <class name="neu.edu.entity.UserProject" table="user_project" catalog="myproject" optimistic-lock="version">
+        <id name="projectId" type="java.lang.Integer">
+            <column name="project_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="projectCategory" class="neu.edu.entity.ProjectCategory" fetch="select">
+            <column name="category_id" />
+        </many-to-one>
+        <many-to-one name="userAccount" class="neu.edu.entity.UserAccount" fetch="select">
+            <column name="user_id" />
+        </many-to-one>
+        <property name="projectName" type="string">
+            <column name="project_name" length="45" not-null="true" />
+        </property>
+        <property name="projectDescription" type="string">
+            <column name="project_description" length="100" />
+        </property>
+        <property name="projectDeadline" type="date">
+            <column name="project_deadline" length="10" />
+        </property>
+        <property name="amountRequired" type="int">
+            <column name="amount_required" not-null="true" />
+        </property>
+        <property name="amountReceived" type="java.lang.Integer">
+            <column name="amount_received" />
+        </property>
+        <set name="userCommentses" table="user_comments" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="project_id" />
+            </key>
+            <one-to-many class="neu.edu.entity.UserComments" />
+        </set>
+        <set name="userDonations" table="user_donation" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="project_id" />
+            </key>
+            <one-to-many class="neu.edu.entity.UserDonation" />
+        </set>
+    </class>
+</hibernate-mapping>

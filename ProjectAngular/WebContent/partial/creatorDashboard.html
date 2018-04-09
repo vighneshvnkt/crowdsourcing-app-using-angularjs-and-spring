@@ -1,0 +1,70 @@
+{{creatorDashboardCtrl.messageDash}}
+	{{creatorDashboardCtrl.message}}
+	
+	<form class='form-horizontal' role='form' ng-submit="creatorDashboardCtrl.addProject()">
+<div class="form-group">
+
+					<div ng-show="creatorDashboardCtrl.error" align="center"
+						class="col-sm-offset-2 col-sm-2 alert alert-danger">{{creatorDashboardCtrl.message}}</div>
+<div class='form-group'>
+					<label class='control-label col-md-2 col-md-offset-2'
+						for='id_name'>Project Name</label>
+						<div class='form-group internal'>
+								<input class='form-control' id='id_name'
+									ng-model="creatorDashboardCtrl.newProject.projectName" name = "projectName"
+									placeholder='Project Name' type='text' required>
+							</div>
+					<label class='control-label col-md-2 col-md-offset-2'
+						for='id_desc'>Project Description</label>	
+						<div class='form-group internal'>
+								<input class='form-control' id='id_description'
+									ng-model="creatorDashboardCtrl.newProject.projectDescription" name = "projectDescription"
+									placeholder='Project Description' type='text' required>
+							</div>
+							<label class='control-label col-md-2 col-md-offset-2'
+						for='id_deadline'>Project Deadline</label>	
+						<div class='form-group internal'>
+								<input class='form-control' id='id_deadline'
+									ng-model="creatorDashboardCtrl.newProject.projectDeadline" name = "projectDeadline"
+									placeholder='Project Deadline' type='date' required>
+							</div>
+							<label class='control-label col-md-2 col-md-offset-2'
+						for='id_amount'>Amount Required</label>	
+						<div class='form-group internal'>
+								<input class='form-control' id='id_amount'
+									ng-model="creatorDashboardCtrl.newProject.amountRequired" name = "projectAmount"
+									placeholder='Required Amount(in dollars)' type='number' required>
+							</div>
+							<label class='control-label col-md-2 col-md-offset-2'
+						for='id_catrgory'>Project Category</label>	
+						<div class='form-group internal'>
+						<select class='form-control' id='id_category' name = "category"
+									ng-init = "creatorDashboardCtrl.init1()"
+									ng-options="cat.catName for cat in creatorDashboardCtrl.categories"
+									ng-model="creatorDashboardCtrl.newProject.projectCategory" required>
+						</select>
+						</div>
+						
+						</div>
+				</div>
+				<div class='form-group'>
+					<div class='col-md-offset-4 col-md-3'>
+						<button class='btn btn-primary' 
+							type='submit'>Add Project</button>
+					</div>
+					
+				</div>
+</form>
+	
+
+<div class="page-header" ng-init="creatorDashboardCtrl.init()">
+	
+
+	<table>
+		<tr ng-repeat="project in creatorDashboardCtrl.projects">
+			<td>{{ project.name }}</td>
+			<td><td><a ng-click="creatorDashboardCtrl.viewProject({project})"
+					class="btn btn-primary"> View Project</a></td>
+		</tr>
+	</table>
+</div>

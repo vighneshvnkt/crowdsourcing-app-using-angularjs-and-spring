@@ -1,0 +1,16 @@
+<label >Project Name: </label>
+{{project.name}} <br>
+<label >Project Description</label>
+						{{project.desc}} <br>
+<label >Project Deadline</label>
+					{{project.deadline}} <br>
+<label >Amount required</label>
+						{{project.requiredAmount}}<br>
+<label >Amount received</label>
+						{{project.receivedAmount}}<br>						
+						<label >Project Category</label>
+						{{project.category.catName}}<br>
+
+<form class='form-horizontal' role='form' ng-submit="viewProjectCtrl.deleteProject()">						
+<button class='btn btn-primary' type = "submit" >Delete Project</button>
+</form>
